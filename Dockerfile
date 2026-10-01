@@ -24,7 +24,7 @@ RUN dotnet msbuild -restore src/Sonarr.sln \
     -p:SelfContained=true \
     -p:Configuration=Release \
     -p:Platform=Posix \
-    -p:RuntimeIdentifiers=linux-x64 \
+    -p:RuntimeIdentifiers=linux-arm64 \
     -p:EnableWindowsTargeting=true \
     -p:AssemblyVersion=${SONARR_VERSION} \
     -p:AssemblyConfiguration=${SONARR_BRANCH} \
@@ -32,8 +32,8 @@ RUN dotnet msbuild -restore src/Sonarr.sln \
 
 # Reúne o executável principal e o updater conforme o empacotamento do projeto.
 RUN mkdir -p /publish/Sonarr.Update \
-    && cp -a _output/net10.0/linux-x64/publish/. /publish/ \
-    && cp -a _output/Sonarr.Update/net10.0/linux-x64/publish/. /publish/Sonarr.Update/ \
+    && cp -a _output/net10.0/linux-arm64/publish/. /publish/ \
+    && cp -a _output/Sonarr.Update/net10.0/linux-arm64/publish/. /publish/Sonarr.Update/ \
     && cp LICENSE.md /publish/ \
     && cp /publish/Sonarr.Mono.* /publish/Sonarr.Update/ \
     && cp /publish/Openur.Mono.Unix.* /publish/Sonarr.Update/ \
