@@ -1,0 +1,14 @@
+.git
+.github
+.devcontainer
+.vscode
+**/node_modules
+node_modules
+_temp
+_output
+_artifacts
+_tests
+_tests_results
+coverage
+*.user
+*.suo
