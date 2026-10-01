@@ -17,7 +17,37 @@ Current adaptation scope:
 - Easypanel-oriented container configuration.
 - Persistent volumes for configuration, TV library and downloads.
 
-**Status:** ARM64 build and runtime compatibility are experimental and remain under validation. Do not assume production readiness until a complete build and deployment have been verified.
+**Status:** The ARM64 image has been built and its runtime has been validated in an Easypanel deployment. This confirms the tested build and deployment path, but does not constitute broad production-readiness certification across other environments.
+
+## Easypanel deployment
+
+The container is intended to run as a single Sonarr instance with persistent storage.
+
+### Service configuration
+
+- **Internal HTTP port:** `8989`. Configure the Easypanel domain/proxy to forward traffic to this port; TLS termination is handled by the platform.
+- **Replicas:** `1`. Do not run multiple Sonarr instances against the same configuration database.
+- **Persistent volumes:**
+  - `/config` — application configuration and SQLite databases.
+  - `/tv` — TV library.
+  - `/downloads` — download directory.
+- **Update strategy:** use `stop-first` with update parallelism `1`, so the old task stops before a replacement starts.
+
+For an Easypanel deployment backed by Docker Swarm, the service update settings can be applied with:
+
+```bash
+docker service update \
+  --replicas 1 \
+  --update-order stop-first \
+  --update-parallelism 1 \
+  <service_name>
+```
+
+Replace `<service_name>` with the actual Swarm service name. These are deployment settings managed by Easypanel/Docker Swarm; they are not configured by the Dockerfile.
+
+### Startup and domain routing
+
+After changing deployment or domain settings, if Easypanel reports that the service is not started while the container is already running, restart the service from the Easypanel panel to refresh its service state and routing configuration.
 
 ## Upstream lineage
 
