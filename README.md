@@ -1,3 +1,50 @@
+# Sonarr — Easypanel / ARM64
+
+> **Unofficial, deployment-focused fork.**
+>
+> This repository is a derivative of [Sonarr](https://github.com/Sonarr/Sonarr), maintained by [Jaison Perazza](https://github.com/jaison). It adds deployment and packaging adaptations intended for running Sonarr v5 with Docker on Easypanel and ARM64 (aarch64) systems.
+>
+> This is not an official Sonarr project or distribution, and it is not affiliated with or endorsed by the Sonarr maintainers.
+
+## Purpose
+
+The goal of this fork is to make deployment in the target environment easier, while keeping the upstream Sonarr application as the foundation.
+
+Current adaptation scope:
+
+- Multi-stage Docker build.
+- ARM64 (linux-arm64 / aarch64) build target.
+- Easypanel-oriented container configuration.
+- Persistent volumes for configuration, TV library and downloads.
+
+**Status:** ARM64 build and runtime compatibility are experimental and remain under validation. Do not assume production readiness until a complete build and deployment have been verified.
+
+## Upstream lineage
+
+This repository follows the original project through this fork chain:
+
+- **Original project:** [Sonarr/Sonarr](https://github.com/Sonarr/Sonarr)
+- **Intermediate fork:** [stevietv/Sonarr](https://github.com/stevietv/Sonarr)
+- **This deployment fork:** [jaison/Sonarr](https://github.com/jaison/Sonarr)
+
+The original Sonarr repository remains the authoritative source for the application's development, documentation and support. Issues specific to this fork's Docker build or Easypanel deployment should be reported here; application issues should be checked against the upstream project.
+
+## Maintenance and changes
+
+Changes in this repository are intended to stay focused on deployment, packaging and platform compatibility. They do not represent a separate Sonarr implementation or an alternative development roadmap.
+
+Upstream changes may be incorporated as appropriate. Deployment-specific changes are maintained in this repository.
+
+## License and credits
+
+Sonarr is distributed under the GNU General Public License v3.0 (GPL-3.0). This fork retains the upstream license and notices. All original application code, project identity and contributor credits belong to their respective authors and contributors.
+
+---
+
+**Fork notice:** This repository contains modifications to the upstream project for a specific deployment environment. Adaptations in this fork are maintained independently and are not official Sonarr releases.
+
+---
+
 # <img width="24px" src="./Logo/256.png" alt="Sonarr"></img> Sonarr
 
 [![Translated](https://translate.servarr.com/widget/servarr/sonarr/svg-badge.svg)](https://translate.servarr.com/engage/servarr/)
