@@ -4,7 +4,7 @@
 FROM node:24.19.0-bookworm-slim AS frontend
 WORKDIR /src
 
-RUN npm install --global yarn@1.22.22
+RUN corepack enable && corepack prepare yarn@1.22.22 --activate
 
 COPY . .
 RUN yarn install --frozen-lockfile \
