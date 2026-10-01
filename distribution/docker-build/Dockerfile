@@ -25,7 +25,7 @@ RUN apt-cache policy mono-complete
 RUN apt-cache policy cli-common-dev
 
 COPY debian-start.sh /debian-start.sh
-RUN  fromdos /debian-start.sh
+RUN  fromdos /debian-start.sh && chmod +x /debian-start.sh
 
 WORKDIR /data
 VOLUME [ "/data/sonarr_bin", "/data/build", "/data/output" ]
