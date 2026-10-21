@@ -72,6 +72,7 @@ function EditImportListModalContent({
     monitorNewItems,
     qualityProfileId,
     seriesType,
+    language,
     seasonFolder,
     tags,
     tagExisting,
@@ -240,6 +241,18 @@ function EditImportListModalContent({
             </FormRow>
 
             <FormRow>
+              <FormLabel>{translate('Language')}</FormLabel>
+              <FormInputHelpText text={translate('ListLanguageHelpText')} />
+              <FormInput
+                type={inputTypes.LANGUAGE_SELECT}
+                name="language"
+                includeAny={false}
+                onChange={handleInputChange}
+                {...language}
+              />
+            </FormRow>
+
+            <FormRow>
               <FormLabel>
                 {translate('SeriesType')}
 
@@ -280,7 +293,6 @@ function EditImportListModalContent({
                 advancedSettings={showAdvancedSettings}
                 provider="importList"
                 providerData={item}
-                layout="row"
                 {...field}
                 onChange={handleFieldChange}
               />

@@ -45,6 +45,9 @@ import QualityProfileSelectInput, {
 import RootFolderSelectInput, {
   RootFolderSelectInputProps,
 } from './Select/RootFolderSelectInput';
+import SeasonTypeSelectInput, {
+  SeasonTypeSelectInputProps,
+} from './Select/SeasonTypeSelectInput';
 import SeriesTypeSelectInput, {
   SeriesTypeSelectInputProps,
 } from './Select/SeriesTypeSelectInput';
@@ -55,7 +58,7 @@ import TagSelectInput, { TagSelectInputProps } from './Tag/TagSelectInput';
 import TextTagInput, { TextTagInputProps } from './Tag/TextTagInput';
 import TextArea, { TextAreaProps } from './TextArea';
 import TextInput, { TextInputProps } from './TextInput';
-import styles from './FormInputGroup.module.css';
+import styles from './FormInput.module.css';
 
 const componentMap: Record<InputType, ElementType> = {
   autoComplete: AutoCompleteInput,
@@ -79,6 +82,7 @@ const componentMap: Record<InputType, ElementType> = {
   path: PathInput,
   qualityProfileSelect: QualityProfileSelectInput,
   rootFolderSelect: RootFolderSelectInput,
+  seasonTypeSelect: SeasonTypeSelectInput,
   select: EnhancedSelectInput,
   seriesTag: SeriesTagInput,
   seriesTypeSelect: SeriesTypeSelectInput,
@@ -132,6 +136,8 @@ type PickProps<V, C extends InputType> = C extends 'autoComplete'
   ? QualityProfileSelectInputProps
   : C extends 'rootFolderSelect'
   ? RootFolderSelectInputProps
+  : C extends 'seasonTypeSelect'
+  ? SeasonTypeSelectInputProps
   : C extends 'select'
   ? // eslint-disable-next-line @typescript-eslint/no-explicit-any
     EnhancedSelectInputProps<any, V>
@@ -242,7 +248,7 @@ function FormInput<T, C extends InputType>(props: FormInputProps<T, C>) {
             {unit && (
               <div
                 className={
-                  type === inputTypes.NUMBER
+                  type === inputTypes.NUMBER || type === inputTypes.FLOAT
                     ? styles.inputUnitNumber
                     : styles.inputUnit
                 }

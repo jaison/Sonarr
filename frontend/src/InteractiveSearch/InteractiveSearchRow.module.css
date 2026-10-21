@@ -1,7 +1,27 @@
+.row {
+  display: flex;
+  align-items: stretch;
+}
+
 .protocol {
   composes: cell from 'Components/Table/Cells/TableRowCell.module.css';
 
+  flex: 0 0 auto;
   width: 80px;
+}
+
+.title {
+  composes: cell from 'Components/Table/Cells/TableRowCell.module.css';
+
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+@media (--breakpointLarge) {
+  .title {
+    min-width: 250px;
+    white-space: normal;
+  }
 }
 
 .titleContent {
@@ -18,28 +38,34 @@
 .indexer {
   composes: cell from 'Components/Table/Cells/TableRowCell.module.css';
 
+  flex: 0 0 auto;
   width: 85px;
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
 
 .quality,
 .languages {
   composes: cell from 'Components/Table/Cells/TableRowCell.module.css';
 
+  flex: 0 0 auto;
   text-align: center;
 }
 
 .quality {
+  width: 170px;
   white-space: nowrap;
 }
 
 .languages {
-  width: 100px;
+  width: 140px;
 }
 
 .customFormatScore {
   composes: cell from 'Components/Table/Cells/TableRowCell.module.css';
 
-  width: 55px;
+  flex: 0 0 auto;
+  width: 70px;
   font-weight: bold;
   cursor: default;
 }
@@ -48,12 +74,14 @@
 .indexerFlags {
   composes: cell from 'Components/Table/Cells/TableRowCell.module.css';
 
+  flex: 0 0 auto;
   width: 50px;
 }
 
 .history {
   composes: cell from 'Components/Table/Cells/TableRowCell.module.css';
 
+  flex: 0 0 auto;
   width: 75px;
 }
 
@@ -65,18 +93,29 @@
 .size {
   composes: cell from 'Components/Table/Cells/TableRowCell.module.css';
 
+  flex: 0 0 auto;
   white-space: nowrap;
+}
+
+.age {
+  width: 70px;
+}
+
+.size {
+  width: 90px;
 }
 
 .peers {
   composes: cell from 'Components/Table/Cells/TableRowCell.module.css';
 
+  flex: 0 0 auto;
   width: 75px;
 }
 
 .download {
   composes: cell from 'Components/Table/Cells/TableRowCell.module.css';
 
+  flex: 0 0 auto;
   width: 80px;
 }
 
